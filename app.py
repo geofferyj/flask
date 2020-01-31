@@ -15,7 +15,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config['SECRET_KEY'] = "efd432e0aca715610c505c533037b95d6fb22f5692a0d33820ab7b19ef06f513"
 
-db_string = 'postgres+psycopg2://geoffery:DONsniper@001@localhost:5432/flask'
+db_string = 'postgres+psycopg2://geojoe_geoffery:donsniper123@localhost:5432/geojoe_flask'
 engine = create_engine(db_string)
 db = scoped_session(sessionmaker(bind=engine))
  
