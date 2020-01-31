@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign Up{% endblock title %}
+
+
+{% block content %}
+
+<div class="card shadow p-3 mb-5 bg-white rounded m-auto" style="width: 40%;">
+    <form class="form-signin" action="/signup" method="POST">
+        <div class="text-center mb-4">
+            <img class="mb-4" src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="100px"
+                height="auto">
+            <h1 class="h3 mb-3 font-weight-normal">SIGN UP</h1>
+        </div>
+        <!-- name -->
+        <div class="form-label-group">
+            <input type="text" id="name" class="form-control" name="name" placeholder="Password" required autofocus>
+            <label for="name">Name</label>
+        </div>
+
+        <!-- username -->
+        <div class="form-label-group">
+            <input type="text" id="username" class="form-control" name="username" placeholder="Password" required>
+            <label for="username">Username</label>
+        </div>
+
+        <!-- email -->
+        <div class="form-label-group">
+            <input type="email" id="email" class="form-control" name="email" placeholder="Email address" required>
+            <label for="email">Email address</label>
+        </div>
+
+        <!-- password1 -->
+        <div class="form-label-group">
+            <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+            <label for="password">Password</label>
+        </div>
+
+        <!-- password2
+    <div class="form-label-group">
+        <input type="password" id="inputPassword2" class="form-control" name="password2" placeholder="Password"
+            required>
+        <label for="inputPassword2">Password again</label>
+    </div> -->
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+        {% for message in messages  %}
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+        {% endwith %}
+    </form>
+
+</divclas>
+
+{% endblock content %}
