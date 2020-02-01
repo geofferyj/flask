@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/geojoe/public_html/flask
+    - /bin/cp -r * $DEPLOYPATH
