@@ -5,7 +5,6 @@
 <div class="card shadow p-3 mb-5 bg-white rounded m-auto" style="width: 70%;">
 
     <form action="/edit_post" method="POST">
-        <!-- action="/edit_post" method="POST"> -->
         <div class="form-group">
             <label for="post_title">Email address</label>
             <input type="text" class="form-control" id="post_title" name="post_title" placeholder="post title">
@@ -13,15 +12,12 @@
 
 
         <div class="form-group">
-            <label for="post_body">Example textarea</label>
-            <input type="hidden" class="form-control" id="post_body" name="post_body" rows="15" value="">
-        </div>
+            <label for="post_body">enter post</label>
+            <textarea name="post_body" id="post_body" cols="30" rows="10" class="editor"></textarea> </div>
 
-        <div id="editor">
 
-        </div>
 
-        <button type="submit" class="btn btn-primary" onclick="returnEntry()">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
 </div>
@@ -31,56 +27,53 @@
 
 {% block script %}
 <script>
-    var fonts = ['sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'];
-
-    var editor = new Quill('#editor', {
-        modules: {
-            'syntax': true,
-            'toolbar': [
-                [{
-                    'font': []
-                }, {
-                    'size': []
-                }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{
-                    'color': []
-                }, {
-                    'background': []
-                }],
-                [{
-                    'script': 'super'
-                }, {
-                    'script': 'sub'
-                }],
-                [{
-                    'header': ['1', '2', '3', '4', '5', '6']
-                }, 'blockquote', 'code-block'],
-                [{
-                    'list': 'ordered'
-                }, {
-                    'list': 'bullet'
-                }, {
-                    'indent': '-1'
-                }, {
-                    'indent': '+1'
-                }],
-                [{
-                    'direction': 'rtl'
-                }, {
-                    'align': []
-                }],
-                ['link', 'image', 'video', 'formula'],
-                ['clean']
-            ],
+    $('.editor').trumbowyg({
+        btnsDef: {
+            image: {
+                dropdown: ['insertImage', 'upload'],
+                ico: 'insertImage'
+            }
         },
-        theme: 'snow'
+
+        plugins: {
+            // Add imagur parameters to upload plugin for demo purposes
+            upload: {
+                serverPath: '/static/images/uploads',
+                fileFieldName: 'image',
+               
+            }
+        }, 
+
+        btns: [
+            ['viewHTML'],
+            ['bold', 'italic'],
+            ['link'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['fontsize'],
+            ['foreColor', 'backColor'],
+            ['formatting'],
+            ['superscript', 'subscript'],
+            ['image'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['lineheight'],
+            ['highlight'],
+            ['removeformat'],
+            ['mathml'],
+            ['table']
+        ]
     });
 
-    function returnEntry() {
-        var post_body = document.querySelector('input[name=post_body]');
-        post_body.value = editor.root.innerHTML;
-    }
+
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)']
+            ]
+        }
+    });
 </script>
 
 {% endblock script %}

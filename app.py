@@ -58,17 +58,13 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        users = db.execute("select * from users where username= :username", {"username": username})
-
-        user_info = []
-        for user in users:
-            user_info = list(user)
-        
-        if username in user_info and password in user_info:
+        users = db.execute("select * from users where username= :username", {"username": username}).fetchone()
+     
+        if user:
             session['Logged_in'] = True
-            session['username'] = username
-            session['name'] = user_info[1]
-            session['email'] = user_info[3]
+            session['username'] = user.username
+            session['name'] = user.name
+            session['email'] = user.email
             flash('Log in Successful')
             return redirect(url_for('index'))
         else:

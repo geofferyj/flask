@@ -52,9 +52,9 @@ a.article-title:hover {
   text-decoration: none;
 }
 
-.article-content {
-  /* white-space: pre-line; */
-}
+/* .article-content {
+  white-space: pre-line;
+} */
 
 .article-img {
   height: 65px;
@@ -111,6 +111,6 @@ a.article-title:hover {
   max-height: auto;
 }
 
-.editor{
-  /* min-height:200px; */
-}
+/* .editor{
+  min-height:200px;
+} */
