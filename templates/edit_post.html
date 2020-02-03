@@ -2,7 +2,7 @@
 {% block title %}Editing Post{% endblock title %}
 
 {% block content %}
-<div class="card shadow p-3 mb-5 bg-white rounded m-auto" style="width: 70%;">
+<div class="card shadow p-3 mb-5 bg-white rounded m-auto" style="width: 100%;">
 
     <form action="/edit_post" method="POST">
         <div class="form-group">
@@ -26,54 +26,4 @@
 {% endblock content %}
 
 {% block script %}
-<script>
-    $('.editor').trumbowyg({
-        btnsDef: {
-            image: {
-                dropdown: ['insertImage', 'upload'],
-                ico: 'insertImage'
-            }
-        },
-
-        plugins: {
-            // Add imagur parameters to upload plugin for demo purposes
-            upload: {
-                serverPath: '/static/images/uploads',
-                fileFieldName: 'image',
-               
-            }
-        }, 
-
-        btns: [
-            ['viewHTML'],
-            ['bold', 'italic'],
-            ['link'],
-            ['undo', 'redo'], // Only supported in Blink browsers
-            ['fontsize'],
-            ['foreColor', 'backColor'],
-            ['formatting'],
-            ['superscript', 'subscript'],
-            ['image'],
-            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-            ['unorderedList', 'orderedList'],
-            ['horizontalRule'],
-            ['lineheight'],
-            ['highlight'],
-            ['removeformat'],
-            ['mathml'],
-            ['table']
-        ]
-    });
-
-
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [
-                ['$', '$'],
-                ['\\(', '\\)']
-            ]
-        }
-    });
-</script>
-
 {% endblock script %}

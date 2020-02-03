@@ -203,3 +203,52 @@
             });
 
    })(jQuery);
+
+
+   $('.editor').trumbowyg({
+    btnsDef: {
+        image: {
+            dropdown: ['insertImage', 'upload'],
+            ico: 'insertImage'
+        }
+    },
+
+    plugins: {
+        // Add imagur parameters to upload plugin for demo purposes
+        upload: {
+            serverPath: '/uploader',
+            fileFieldName: 'image',
+           
+        }
+    }, 
+
+    btns: [
+        ['viewHTML'],
+        ['bold', 'italic'],
+        ['link'],
+        ['undo', 'redo'], // Only supported in Blink browsers
+        ['fontsize'],
+        ['foreColor', 'backColor'],
+        ['formatting'],
+        ['superscript', 'subscript'],
+        ['image'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
+        ['lineheight'],
+        ['highlight'],
+        ['removeformat'],
+        ['mathml'],
+        ['table']
+    ]
+});
+
+
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)']
+        ]
+    }
+});

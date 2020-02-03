@@ -58,7 +58,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        users = db.execute("select * from users where username= :username", {"username": username}).fetchone()
+        user = db.execute("select * from users where username= :username", {"username": username}).fetchone()
      
         if user:
             session['Logged_in'] = True

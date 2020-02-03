@@ -23,20 +23,32 @@
 
 <div>
 
-  {% for post in posts %}
-
-  <article class="media content-section">
-    <div class="media-body">
-      <div class="article-metadata">
-        <a class="mr-2" href="#">{{ post.name }}</a>
-        <small class="text-muted">{{ post.date_published.strftime("%c")}}</small>
-      </div>
-      <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-      <p class="article-content">{{ post.body|safe }}</p>
+  <!-- Blog Post Start -->
+{% for post in posts %}
+<div class="col-md-12 blog-post">
+    <div class="post-title">
+        <a href="">
+            <h2>{{post.title}}</h2>
+        </a>
     </div>
-  </article>
-  
-  {% endfor %}
+    <div class="post-info">
+        <span>{{ post.date_published.strftime("%c")}} / by <a href="#" target="_blank">{{post.name}}</a></span>
+    </div>
+    <p>{{ post.body|safe }}</p>
+    <a href="" class="button button-style button-anim fa fa-long-arrow-right"><span>Read
+            More</span></a>
+</div>
+{% endfor %}
+
+<!-- Blog Post End -->
 
 </div>
+
+
+<div class="col-md-12 text-center">
+  <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
+  <div id="post-end-message"></div>
+</div>
+
+
 {% endblock content %}
