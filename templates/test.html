@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="trumbowyg/dist/ui/trumbowyg.min.css">
+
+    </head>
+
+    <body>
+        <form action="" method="GET">
+            <textarea id="editor">
+
+        </textarea>
+            <button type="submit">button</button>
+        </form>
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+        <script src="trumbowyg/dist/trumbowyg.min.js"></script>
+        <script src="trumbowyg/plugins/emoji/trumbowyg.emoji.js"></script>
+        <script src="trumbowyg/dist/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
+        <script src="trumbowyg/dist/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
+
+
+        <script>
+            $('#editor').trumbowyg({
+                btns: [
+                    ['bold', 'italic'],
+                    ['link'],
+                    ['undo', 'redo'], // Only supported in Blink browsers
+                    ['fontfamily'],
+                    ['fontsize'],
+                    ['formatting'],
+                    ['superscript', 'subscript'],
+                    ['insertImage'],
+                    ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                    ['unorderedList', 'orderedList'],
+                    ['horizontalRule'],
+                    ['removeformat']
+                ]
+            });
+        </script>
+    </body>
+
+</html>
