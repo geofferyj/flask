@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div class="card shadow p-3 mb-5 bg-white rounded m-auto" style="width: 40%;">
+<div class="card shadow bg-white rounded m-auto" style="max-width: 425px;">
     <form class="form-signin" action="/signup" method="POST">
         <div class="text-center mb-4">
             <img class="mb-4" src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="100px"
@@ -63,6 +63,6 @@
         {% endwith %}
     </form>
 
-</divclas>
-
+</div>
+<div class="col-md-12 text-center">
 {% endblock content %}

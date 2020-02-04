@@ -47,7 +47,7 @@ db.commit()
 @app.route('/')
 def index():
 
-    posts = db.execute("select title, slug, body, name, date_published  from posts, users where users.user_id=posts.author").fetchall()
+    posts = db.execute("select title, slug, body, name, date_published  from posts, users where users.user_id=posts.author order by date_published desc")
     return render_template('index.html', posts=posts)
 
 
@@ -112,7 +112,7 @@ def profile():
             name = session['name']
             email = session['email']
 
-            posts = db.execute("select title, slug, body, date_published, name from posts, users where users.user_id=posts.author and users.username = :username;",{"username": username})
+            posts = db.execute("select title, slug, body, date_published, name from posts, users where users.user_id=posts.author and users.username = :username order by date_published desc",{"username": username})
             return render_template('profile.html', username=username, name=name, email=email, posts=posts)
     except KeyError:
         return redirect(url_for('login'))
@@ -134,6 +134,16 @@ def edit_post():
 
         return redirect(url_for('profile'))
     return render_template('edit_post.html')
+
+
+
+
+@app.route('/<slug>')
+def post(slug):
+
+    picture = ""
+    posts = db.execute("select title, date_published, body, name from posts, users where posts.slug = :slug", {"slug": slug})
+    return render_template('post.html', posts=posts, picture=picture)
 
 
 

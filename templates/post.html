@@ -1,0 +1,65 @@
+﻿{% extends 'base.html' %}
+
+
+{% block title %}
+
+Geo's Blog
+
+{% endblock title %}
+
+
+{% block content %}
+
+{% for post in posts %}
+
+<!-- Post Headline Start -->
+<div class="post-title">
+  <h1>{{ post.title }}</h1>
+</div>
+<!-- Post Headline End -->
+
+
+<!-- Post Detail Start -->
+<div class="post-info">
+  <span>{{  post.date_published.strftime("%B %d, %Y") }} / by <a href="">{{ post.name}}</a></span>
+</div>
+<!-- Post Detail End -->
+
+<div class="col-md-12 blog-post">
+  {{ post.body | safe}}
+
+</div>
+
+
+<!-- Post Author Bio Box Start -->
+<div class="about-author margin-top-70 margin-bottom-50">
+
+  <div class="picture">
+    {% if picture %}
+    <img src="{{profile_pic}}" class="img-responsive" alt="">
+    {% else %}
+    <img src="{{url_for('static', filename='images/blog/author.png')}}" class="img-responsive" alt="">
+    {% endif %}
+  </div>
+
+  <div class="c-padding">
+    <h4>Article By <a href="#" target="_blank" data-toggle="tooltip" data-placement="top">{{post.name}}</a>
+    </h4>
+    <p></p>
+  </div>
+</div>
+<!-- Post Author Bio Box End -->
+
+
+<!-- Post Comment Start -->
+<div id="comment" class="comment">
+  <h3>Discuss about post</h3>
+  <!-- You can use here any third party commenting plugin here like disqus.com-->
+</div>
+<!-- Post Comment End -->
+
+
+{% endfor %}
+<div class="col-md-12 text-center">
+
+  {% endblock content %}
