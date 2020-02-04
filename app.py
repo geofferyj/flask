@@ -142,7 +142,7 @@ def edit_post():
 def post(slug):
 
     picture = ""
-    posts = db.execute("select title, date_published, body, name from posts, users where posts.slug = :slug", {"slug": slug})
+    posts = db.execute("select title, date_published, body, name from posts, users where users.user_id = posts.author and posts.slug = :slug", {"slug": slug})
     return render_template('post.html', posts=posts, picture=picture)
 
 
