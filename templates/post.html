@@ -10,7 +10,15 @@ Geo's Blog
 
 {% block content %}
 
-{% for post in posts %}
+{% if not post %}
+
+<div class="post-title">
+  <h1> OOPS! SORRY THIS PAGE IS NOT FOUND</h1>
+</div>
+
+
+{% else %}
+
 
 <!-- Post Headline Start -->
 <div class="post-title">
@@ -58,8 +66,8 @@ Geo's Blog
 </div>
 <!-- Post Comment End -->
 
+{% endif %}
 
-{% endfor %}
 <div class="col-md-12 text-center">
 
   {% endblock content %}

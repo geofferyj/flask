@@ -7,13 +7,13 @@
     <form action="/edit_post" method="POST">
         <div class="form-group">
             <label for="post_title">Email address</label>
-            <input type="text" class="form-control" id="post_title" name="post_title" placeholder="post title">
+            <input type="text" class="form-control" id="post_title" name="post_title" placeholder="post title" required>
         </div>
 
 
         <div class="form-group">
             <label for="post_body">enter post</label>
-            <textarea name="post_body" id="post_body" cols="30" rows="10" class="editor"></textarea> </div>
+            <textarea name="post_body" id="post_body" cols="30" rows="10" class="editor" required></textarea> </div>
 
 
 
@@ -23,6 +23,7 @@
 </div>
 
 <div class="col-md-12 text-center">
+    return res
 
 {% endblock content %}
 
