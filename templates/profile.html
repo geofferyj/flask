@@ -2,17 +2,11 @@
 {% block title %}Profile-Page{% endblock title %}
 
 {% block content %}
-<div class="row">
-  <div class="col-10">
-    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{ name }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">@{{ username }}</h6>
-        <p class="card-subtitle mb-2 ">{{ email }}</p>
-
-      </div>
-    </div>
-
+<div class="card profile shadow p-3 mb-5 bg-white rounded" style="width: 100%;">
+  <div class="card-body">
+    <h5 class="card-title">{{ name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">@{{ username }}</h6>
+    <p class="card-subtitle mb-2 ">{{ email }}</p>
   </div>
 
   <div class="editpostbtn">
@@ -21,34 +15,73 @@
 
 </div>
 
+<hr>
+
+<div class="ph">
+  <h1>Your Posts</h1>
+</div>
+
+<hr>
+
+
 
 <!-- Blog Post Start -->
 {% for post in posts %}
 
 <div class="col-md-12 shadow p-3 mx-auto page-body blog-post" style="width:90%;">
-    <div class="row">
+  <div class="row">
 
+    <div class="col-md-12">
 
+      <div class="post-title">
+        <a href="{{url_for('post', slug=post.slug)}}">
+          <h2>{{post.title}}</h2>
+        </a>
 
+        
+        <a type="button" href="{{url_for('update_post', id=post.post_id)}}" class="btn btn-success" role="button" style="color: aliceblue;">
+          Update
+        </a>
 
-        <div class="col-md-12">
-            <div class="post-title">
-                <a href="/{{post.slug}}">
-                    <h2>{{post.title}}</h2>
-                </a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-post-dialogue">
+          delete
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="delete-post-dialogue" tabindex="-1" role="dialog"
+          aria-labelledby="delete-post-dialogue-Label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="delete-post-dialogue-Label">Delete Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure? this action cannot be undone
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="/delete/{{post.post_id}}" type="button" class="btn btn-danger" role="button">Proceed</a>
+              </div>
             </div>
-            <div class="post-info">
-                <span>{{ post.date_published.strftime("%B %d, %Y")}} / by <a href="#"
-                        target="_blank">{{post.name}}</a></span>
-            </div>
-            <p>{{ post.body|safe|striptags|truncate(100)}}</p>
-            <a href="/{{post.slug}}" class="button button-style button-anim fa fa-long-arrow-right"><span>Read
-                    More</span></a>
+          </div>
         </div>
 
+      </div>
 
+      <div class="post-info">
+        <span>{{ post.date_published.strftime("%B %d, %Y")}} / by <a href="#" target="_blank">{{post.name}}</a></span>
 
+      </div>
+      <p>{{ post.body|safe|striptags|truncate(100)}}</p>
+      <a href="{{url_for('post', slug=post.slug)}}" class="button button-style button-anim fa fa-long-arrow-right"><span>Read
+          More</span></a>
     </div>
+
+  </div>
 </div>
 
 
@@ -58,10 +91,10 @@
 
 
 <div class="col-md-12 text-center">
-    <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
-    <div id="post-end-message"></div>
-    {% endblock content %}
+  <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
+  <div id="post-end-message"></div>
+  {% endblock content %}
 
 
 
-    <!-- Blog Post (Right Sidebar) Start -->
+  <!-- Blog Post (Right Sidebar) Start -->

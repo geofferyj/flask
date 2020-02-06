@@ -5,13 +5,15 @@
 
 <div class="card shadow bg-white rounded m-auto" style="max-width: 425px;">
 
-    <form class="form-signin" action="/login" method="POST">
+    <form class="form-signin" action="" method="POST">
         <div class="text-center mb-4">
             <img class="mb-4" src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="100px"
                 height="auto">
             <h1 class="h3 mb-3 font-weight-normal">SIGN IN</h1>
         </div>
 
+        <input type="hidden" name="next" value="{{ request.args.get('next', '') }}" />
+        
         <div class="form-label-group">
             <input type="text" id="username" class="form-control" placeholder="Username" name="username" required
                 autofocus>
@@ -53,4 +55,4 @@
 </div>
 <div class="col-md-12 text-center">
 
-{% endblock content %}
+    {% endblock content %}
