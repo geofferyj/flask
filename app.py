@@ -16,7 +16,8 @@ application = app
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config['SECRET_KEY'] = "efd432e0aca715610c505c533037b95d6fb22f5692a0d33820ab7b19ef06f513"
-app.config['UPLOAD_FOLDER'] = 'static/images/uploads'
+app.config['UPLOAD_FOLDER'] = '/home/geojoe/public_html/flask/static/images/uploads'
+
 
 app.config['ALLOWED_EXT'] = ['jpg', 'jpeg', 'png', 'gif', ]
 
@@ -217,10 +218,9 @@ def upload():
 
             if allowed_file(image.filename):
                 filename = secure_filename(image.filename)
-                image_path = os.path.join(
-                    app.config['UPLOAD_FOLDER'], filename)
+                image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 image.save(image_path)
-                responce_msg = {"data": {"link": image_path},
+                responce_msg = {"data": {"link": os.path.join('/static/images/uploads', filename)},
                                 "success": True, "status": 200}
                 res = make_response(jsonify(responce_msg))
                 return res

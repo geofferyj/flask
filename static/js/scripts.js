@@ -251,7 +251,9 @@ $('.editor').trumbowyg({
         ['highlight'],
         ['removeformat'],
         ['mathml'],
-        ['table']
+        ['table'],
+        ['fullscreen']
+    
     ]
 });
 
