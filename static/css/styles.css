@@ -729,7 +729,6 @@ div.blog-post {
   height: 100%;
   object-fit: cover;
   opacity: .5;
-  user-drag: none;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -883,7 +882,7 @@ blockquote {
 
 /* You May Also Like */
 
-.you-may-also-like {}
+/* .you-may-also-like {} */
 
 .you-may-also-like h3 {
   font-size: 25px;
@@ -908,7 +907,7 @@ blockquote {
 
 /* Comment */
 
-.comment {}
+/* .comment {} */
 
 .comment h3 {
   font-size: 25px;
@@ -1877,7 +1876,7 @@ blockquote {
 }
 
 
-.profile {}
+/* .profile {} */
 
 .ph {
   text-align: center;
