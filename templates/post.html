@@ -10,7 +10,7 @@ Geo's Blog
 
 {% block content %}
 
-{% if not post %}
+{% if not postt %}
 
 <div class="post-title">
   <h1> OOPS! SORRY THIS PAGE IS NOT FOUND</h1>
@@ -18,23 +18,14 @@ Geo's Blog
 
 
 {% else %}
-
-
-<!-- Post Headline Start -->
-<div class="post-title">
-  <h1>{{ post.title }}</h1>
-</div>
-<!-- Post Headline End -->
-
-
 <!-- Post Detail Start -->
 <div class="post-info">
-  <span>{{  post.date_published.strftime("%B %d, %Y") }} / by <a href="">{{ post.name}}</a></span>
+  <span>{{  postt.date_published.strftime("%B %d, %Y") }} / by <a href="">{{ postt.name}}</a></span>
 </div>
 <!-- Post Detail End -->
 
 <div class="col-md-12 blog-post">
-  {{ post.body | safe}}
+  {{ postt.body | safe}}
 
 </div>
 
@@ -51,7 +42,7 @@ Geo's Blog
   </div>
 
   <div class="c-padding">
-    <h4>Article By <a href="#" target="_blank" data-toggle="tooltip" data-placement="top">{{post.name}}</a>
+    <h4>Article By <a href="#" target="_blank" data-toggle="tooltip" data-placement="top">{{postt.name}}</a>
     </h4>
     <p></p>
   </div>

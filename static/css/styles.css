@@ -245,7 +245,7 @@ button {
 }
 
 .content-page {
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 60px;
   border-top: 1px dashed #dedede;
   border-bottom: 1px dashed #dedede;
@@ -634,6 +634,7 @@ button {
 
 div.blog-post {
   display: none;
+  padding-top: 50px;
   margin-bottom: 50px;
 }
 
@@ -659,6 +660,19 @@ div.blog-post {
   margin-top: 24px;
 }
 
+.heading {
+  text-align: center;
+  color: #333333;
+  font-size: 35px;
+  line-height: 45px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.heading h1 {
+  margin: auto;
+}
+
 .blog-post .post-title h3 {
   font-size: 25px;
   line-height: 35px;
@@ -667,11 +681,18 @@ div.blog-post {
 }
 
 .blog-post .post-info {
-  font-size: 14px;
+  font-weight: 400;
   line-height: 30px;
   font-weight: 500;
-  padding: 10px 0;
   color: #8c8c8c;
+}
+
+.post-info span {
+  font-size: 10px;
+  line-height: 29px;
+  margin-top: 10px;
+  margin-bottom: 200px;
+  padding-bottom: 200px;
 }
 
 .blog-post p {
@@ -1378,12 +1399,6 @@ blockquote {
     font-size: 18px;
     line-height: 28px;
     font-weight: 500;
-  }
-
-  .blog-post .post-info {
-    font-size: 13px;
-    line-height: 29px;
-    font-weight: 400;
   }
 
   .blog-post p {

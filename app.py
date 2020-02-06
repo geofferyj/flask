@@ -48,6 +48,12 @@ db.execute('''CREATE TABLE IF NOT EXISTS posts(
 db.commit()
 
 
+
+@app.template_filter('match')
+def match(s):
+    return re.findall(r'[^a-zA-Z0-9]+', s)
+
+
 def login_required(func):
 
     @functools.wraps(func)
@@ -64,7 +70,7 @@ def index():
 
     posts = db.execute(
         "select title, slug, body, name, date_published  from posts, users where users.user_id=posts.author order by date_published desc")
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', posts=posts, postt={})
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -92,7 +98,7 @@ def login():
             flash('Username or Password incorrect')
             return redirect(url_for('login'))
 
-    return render_template('login.html')
+    return render_template('login.html', postt={})
 
 
 @app.route('/logout')
@@ -120,7 +126,7 @@ def signup():
         except exc.IntegrityError:
             flash('Username Already exists, please try another')
             return redirect(url_for('signup'))
-    return render_template('signup.html')
+    return render_template('signup.html', postt={})
 
 
 @app.route('/profile')
@@ -132,7 +138,7 @@ def profile():
 
     posts = db.execute("select title, post_id, slug, body, date_published, name from posts, users where users.user_id=posts.author and users.username = :username order by date_published desc", {
         "username": username})
-    return render_template('profile.html', username=username, name=name, email=email, posts=posts)
+    return render_template('profile.html', username=username, name=name, email=email, posts=posts, postt={})
 
 
 @app.route('/edit_post', methods=['POST', 'GET'])
@@ -152,7 +158,7 @@ def edit_post():
 
         return redirect(url_for('profile'))
     post = {}
-    return render_template('edit_post.html', post=post)
+    return render_template('edit_post.html', post=post, postt={})
 
 
 @app.route('/delete/<int:id>')
@@ -179,7 +185,7 @@ def update_post(id):
         return redirect(url_for('profile'))
     
     post = db.execute("select title, body from posts where post_id = :id", {'id': id}).fetchone()
-    return render_template('edit_post.html', post = post)    
+    return render_template('edit_post.html', post = post, postt={})    
 
 
 @app.route('/<slug>')
@@ -188,7 +194,7 @@ def post(slug):
     picture = ""
     posts = db.execute("select title, date_published, body, name from posts, users where users.user_id = posts.author and posts.slug = :slug", {
                        "slug": slug}).fetchone()
-    return render_template('post.html', post=posts, picture=picture)
+    return render_template('post.html', postt=posts, picture=picture)
 
 
 def allowed_file(filename):

@@ -102,7 +102,8 @@
                         class="fab fa-facebook"></i></a></li>
                   <li><a href="https://www.twitter.com/geofferyji" target="_blank" class="twitter"><i
                         class="fab fa-twitter"></i></a></li>
-                  <li><a href="https://www.linkedin.com/in/joseph-geoffery-15419816a/" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a></li>
+                  <li><a href="https://www.linkedin.com/in/joseph-geoffery-15419816a/" target="_blank"
+                      class="linkedin"><i class="fab fa-linkedin"></i></a></li>
                   <li><a href="https://www.github.com/geofferyj" target="_blank" class="github"><i
                         class="fab fa-github"></i></a></li>
                 </ul>
@@ -122,8 +123,14 @@
               <div class="row">
 
 
-                <div class="sub-title">
+                <div class="sub-title col-1">
                   <h1><a href="{{ url_for('index') }}"><i class="fas fa-home"></i></a></h1>
+
+                </div>
+
+                <div class="heading col-11">
+                  <h1>{{ postt.title }}
+                  </h1>
                 </div>
 
 
@@ -133,51 +140,51 @@
 
                   {% endblock content %}
 
-                  
-                </div>
 
                 </div>
 
               </div>
 
-
             </div>
-
-
-            <!-- Footer Start -->
-            <div class="col-md-12 page-body margin-top-50 footer">
-              <footer>
-                <ul class="menu-link">
-                  <li><a href="{{ url_for('index') }}">Home</a></li>
-                  <li><a href="{{ url_for('index') }}">Work</a></li>
-                  {% if session['username'] %}
-                  <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                  <li><a href="{{ url_for('profile') }}">Profile</a></li>
-                  {%else%}
-                  <li><a href="{{ url_for('login') }}">Login</a></li>
-                  <li><a href="{{ url_for('signup') }}">Signup</a></li>
-                  {% endif %}
-                </ul>
-
-                <p>© Copyright 2020 Geoffery Joseph.</p>
-
-
-                <!-- UiPasta Credit Start -->
-                <div class="uipasta-credit">Built with love By <a href="#">Geoffery Joseph</a>
-                </div>
-                <!-- UiPasta Credit End -->
-
-
-              </footer>
-            </div>
-            <!-- Footer End -->
 
 
           </div>
-          <!-- Blog Post (Right Sidebar) End -->
+
+
+          <!-- Footer Start -->
+          <div class="col-md-12 page-body margin-top-50 footer">
+            <footer>
+              <ul class="menu-link">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('index') }}">Work</a></li>
+                {% if session['username'] %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                {%else%}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Signup</a></li>
+                {% endif %}
+              </ul>
+
+              <p>© Copyright 2020 Geoffery Joseph.</p>
+
+
+              <!-- UiPasta Credit Start -->
+              <div class="uipasta-credit">Built with love By <a href="#">Geoffery Joseph</a>
+              </div>
+              <!-- UiPasta Credit End -->
+
+
+            </footer>
+          </div>
+          <!-- Footer End -->
+
 
         </div>
+        <!-- Blog Post (Right Sidebar) End -->
+
       </div>
+    </div>
     </div>
 
 
