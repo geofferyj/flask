@@ -3,13 +3,15 @@ from sqlalchemy import create_engine, exc
 from sqlalchemy.orm import sessionmaker, scoped_session
 from flask_session import Session
 from werkzeug import secure_filename
-import re
-import datetime
-import os
-import functools
+import re, datetime, os, functools
 
 
-app = Flask(__name__)
+class ScriptNameStripper(Flask):
+    def __call__(self, environ, start_response):
+        environ['SCRIPT_NAME'] = ''
+        return (super(ScriptNameStripper, self).__call__(environ, start_response))
+                
+app = ScriptNameStripper(__name__)
 application = app
 
 
